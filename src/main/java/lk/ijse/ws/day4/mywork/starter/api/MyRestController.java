@@ -1,9 +1,7 @@
 package lk.ijse.ws.day4.mywork.starter.api;
 
 import lk.ijse.ws.day4.mywork.starter.data.Message;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -31,5 +29,11 @@ public class MyRestController {
         message.setSendTime(new Date());
         return message;
 
+    }
+
+    @RequestMapping(value = "/api/message", method = RequestMethod.POST)
+    public Message createMessage(@RequestBody() Message message) {
+        System.out.println(message);
+        return message;
     }
 }
