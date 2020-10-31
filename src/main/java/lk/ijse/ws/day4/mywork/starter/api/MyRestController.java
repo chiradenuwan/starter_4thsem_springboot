@@ -1,4 +1,4 @@
-package lk.ijse.ws.day4.mywork.starter;
+package lk.ijse.ws.day4.mywork.starter.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
