@@ -1,40 +1,19 @@
 package lk.ijse.ws.day4.mywork.starter.api;
 
-import lk.ijse.ws.day4.mywork.starter.data.Message;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
-
-@RestController
-
+@Controller
+@RequestMapping("/api")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MyRestController {
 
-
-    @GetMapping("/api/hello")
-    public Message greeting() {
-        Message message = new Message();
-        message.setSender("Sever");
-        message.setMessage("Hello World");
-        message.setSendTime(new Date());
-        return message;
-
-    }
-
-    @GetMapping("/api/message")
-    public Message messageBuilder(
-            @RequestParam("username")
-                    String user, @RequestParam("message") String msg) {
-        Message message = new Message();
-        message.setSender(user);
-        message.setMessage(msg);
-        message.setSendTime(new Date());
-        return message;
-
-    }
-
-    @RequestMapping(value = "/api/message", method = RequestMethod.POST)
-    public Message createMessage(@RequestBody() Message message) {
-        System.out.println(message);
-        return message;
+    @GetMapping(path = "/hello", produces = "text/plain")
+    public ResponseEntity<Object> sayHello() {
+        return new ResponseEntity<Object>("Hello World", HttpStatus.OK);
     }
 }

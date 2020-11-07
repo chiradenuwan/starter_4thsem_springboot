@@ -1,15 +1,13 @@
 package lk.ijse.ws.day4.mywork.starter.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
     private int id;
     private String sender;
     private String message;
@@ -59,7 +57,8 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "sender='" + sender + '\'' +
+                "id=" + id +
+                ", sender='" + sender + '\'' +
                 ", message='" + message + '\'' +
                 ", sendTime=" + sendTime +
                 '}';
